@@ -21,7 +21,7 @@ function draw() {
 	function deriveTriangles(ctx, s, xOriginOffset, yOriginOffset, depth) {
 		if (depth > 0) {
 			var baseCoords = _getPathCords(s, xOriginOffset, yOriginOffset);
-			var innerCoords = deriveInnerTriangle(s, xOriginOffset, yOriginOffset);
+			var innerCoords = _deriveInnerTriangle(s, xOriginOffset, yOriginOffset);
 
 			_drawTri(ctx, baseCoords.moveTo, baseCoords.firstPath, baseCoords.secondPath);
 			_drawTri(ctx, innerCoords.moveTo, innerCoords.firstPath, innerCoords.secondPath, 'white');
@@ -30,7 +30,7 @@ function draw() {
 			var bRight = innerCoords.secondPath;
 
 			[top, bLeft, bRight].forEach(function(coords) {
-				var ic = deriveInnerTriangle(s / 2, coords[0], coords[1]);
+				var ic = _deriveInnerTriangle(s / 2, coords[0], coords[1]);
 
 				_drawTri(ctx, ic.moveTo, ic.firstPath, ic.secondPath, 'white');
 			});
@@ -65,7 +65,7 @@ function draw() {
 		};
 	}
 
-	function deriveInnerTriangle(len, xOrigin, yOrigin) {
+	function _deriveInnerTriangle(len, xOrigin, yOrigin) {
 		var s2 = len / 2;
 		var c2 = s2;
 		var b2 = c2 / 2;

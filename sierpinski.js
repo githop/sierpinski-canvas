@@ -4,6 +4,8 @@ function draw() {
 	var ctx = canvas.getContext('2d');
 	canvas.width = 620;
 	canvas.height = 540;
+	var xOriginOffset = 10;
+	var yOriginOffset = 530;
 	var s = 600;
 
 	return {
@@ -14,19 +16,26 @@ function draw() {
 
 	function step(depth) {
 		var draws = 0;
+		var baseCoords = _getPathCords(s, xOriginOffset, yOriginOffset);
+		_drawTri(ctx, baseCoords.moveTo, baseCoords.firstPath, baseCoords.secondPath);
 
-		var draw = setInterval(function() {
-			if (draws < depth) {
-				sierpinski(++draws);
-			} else {
-				clearInterval(draw);
-			}
+		setTimeout(function() {
+			var innerCoords = _deriveInnerTriangle(s, xOriginOffset, yOriginOffset);
+
+			_drawTri(ctx, innerCoords.moveTo, innerCoords.firstPath, innerCoords.secondPath, 'white');
+			var draw = setInterval(function() {
+				if (draws < depth) {
+					sierpinski(++draws);
+				} else {
+					clearInterval(draw);
+				}
+			}, 1000);
 		}, 1000);
+
 	}
 
 	function sierpinski(depth) {
-		var xOriginOffset = 10;
-		var yOriginOffset = 530;
+
 
 		depth = depth ? depth : 4;
 		deriveTriangles(ctx, s, xOriginOffset, yOriginOffset, depth);

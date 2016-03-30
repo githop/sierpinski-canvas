@@ -2,19 +2,33 @@
 function draw() {
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
+	canvas.width = 620;
+	canvas.height = 540;
+	var s = 600;
 
 	return {
-		sierpinski: sierpinski
+		sierpinski: sierpinski,
+		step: step
 	};
 
-	function sierpinski() {
+
+	function step(depth) {
+		var draws = 0;
+
+		var draw = setInterval(function() {
+			if (draws < depth) {
+				sierpinski(++draws);
+			} else {
+				clearInterval(draw);
+			}
+		}, 1000);
+	}
+
+	function sierpinski(depth) {
 		var xOriginOffset = 10;
 		var yOriginOffset = 530;
 
-		canvas.width = 620;
-		canvas.height = 540;
-		var s = 600;
-		var depth = 4;
+		depth = depth ? depth : 4;
 		deriveTriangles(ctx, s, xOriginOffset, yOriginOffset, depth);
 	}
 

@@ -9,7 +9,6 @@ function draw() {
 	var s = 600;
 
 	return {
-		sierpinski: sierpinski,
 		step: step
 	};
 
@@ -35,8 +34,6 @@ function draw() {
 	}
 
 	function sierpinski(depth) {
-
-
 		depth = depth ? depth : 4;
 		deriveTriangles(ctx, s, xOriginOffset, yOriginOffset, depth);
 	}
@@ -71,7 +68,6 @@ function draw() {
 		ctx.moveTo(p1[0], p1[1]);
 		ctx.lineTo(p2[0], p2[1]);
 		ctx.lineTo(p3[0], p3[1]);
-		ctx.lineTo(p1[0], p1[1]);
 		ctx.fillStyle = fillStyle ? fillStyle : 'black';
 		ctx.fill();
 	}

@@ -10,9 +10,43 @@
     #canvas {
       border: 1px solid black;
     }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .cvs-wrapper {
+      margin: 10px;
+    }
+
   </style>
 
-  <canvas id="canvas"></canvas>
+  <h1>Sierpinski Triangle</h1>
+
+  <div class="content">
+    <div class="cvs-wrapper">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="text-wrapper">
+      <p>The Sierpinski triangle is a fractal described in 1915 by Waclaw Sierpinski. It is a self similar structure that occurs at different levels of iterations, or magnifications.</p>
+      <p>My Implementation relies on the following strategy: </p>
+      <ol>
+        <li>Draw base triangle</li>
+        <li>Draw inverted triangle inside base triangle</li>
+        <li>Repeat</li>
+      </ol>
+      <p>
+        Inscribing an inverted triangle inside the base triangle creates more triangles which themselves can be inscribed. This process can be repeated infinitely.
+        My approach uses Pythagoras Theorem to derive the necessary X,Y coordinates for the base and inverted triangles.
+        Once you know the coordinates for the base triangle and the inscribed triangle, the process can be repeated recursively until told to stop.
+      </p>
+
+      <a>This demo is implemented with HTML5 Canvas and Javascript. <a href="https://github.com/githop/sierpinski-canvas" target="_blank">Source code</a></p>
+
+    </div>
+  </div>
 <script src="./sierpinski.js"></script>
 </body>
 </html>

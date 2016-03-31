@@ -7,10 +7,22 @@ function draw() {
 	var xOriginOffset = 10;
 	var yOriginOffset = 530;
 	var s = 600;
+	var redrawBtn = document.getElementById('redraw');
+	var depthInput = document.getElementById('depth');
+
+	redrawBtn.onclick = redraw;
 
 	return {
 		step: step
 	};
+
+	function redraw(ev) {
+		var _depth = depthInput.value === undefined ? 4 : depthInput.value;
+		console.log("hmm", depthInput);
+		console.log('input?', depthInput.value);
+		console.log('depth?',_depth);
+		step(_depth);
+	}
 
 
 	function step(depth) {

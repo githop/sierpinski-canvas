@@ -2,61 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sierpinski</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.lime-blue.min.css" />
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 </head>
 <!--<body onload="draw().sierpinski(220, 195, 200)">-->
 <body onload="draw().step(4)">
   <style>
+    body {
+      background: #f1f1f1;
+    }
+
     #canvas {
-      border: 1px solid black;
+      width: 100%;
+    }
+    .cvs-card.mdl-card {
+      width: 95%;
+      /*height: 540px;*/
     }
 
-    .content {
+    .radio-container {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
     }
 
-    .cvs-wrapper {
-      margin: 10px;
-    }
-
-    @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
-      .content {
-        flex-direction: column;
-      }
-    }
   </style>
 
-  <h1>Sierpinski Triangle</h1>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--6-col">
 
-  <div class="content">
-    <div class="cvs-wrapper">
-      <canvas id="canvas"></canvas>
+      <div class="cvs-card mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__media">
+          <canvas id="canvas"></canvas>
+        </div>
+        <div class="mdl-card__supporting-text">
+          Change depth to increase / decrease the amount of triangles
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <div class="radio-container">
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+            <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="1">
+            <span class="mdl-radio__label">2</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+            <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="2">
+            <span class="mdl-radio__label">3</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+            <input type="radio" id="option-4" class="mdl-radio__button" name="options" value="3">
+            <span class="mdl-radio__label">4</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-5">
+            <input type="radio" id="option-5" class="mdl-radio__button" name="options" value="4" checked>
+            <span class="mdl-radio__label">5</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-6">
+            <input type="radio" id="option-6" class="mdl-radio__button" name="options" value="5">
+            <span class="mdl-radio__label">6</span>
+          </label>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-7">
+            <input type="radio" id="option-7" class="mdl-radio__button" name="options" value="6">
+            <span class="mdl-radio__label">7</span>
+          </label>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="text-wrapper">
-      <p>The Sierpinski triangle is a fractal described in 1915 by Waclaw Sierpinski. It is a self similar structure that occurs at different levels of iterations, or magnifications.</p>
-      <p>My Implementation relies on the following strategy: </p>
-      <ol>
-        <li>Draw base triangle</li>
-        <li>Draw inverted triangle inside base triangle</li>
-        <li>Repeat</li>
-      </ol>
-      <p>
-        Inscribing an inverted triangle inside the base triangle creates more triangles which themselves can be inscribed. This process can be repeated infinitely.
-        My approach uses Pythagoras Theorem to derive the necessary X,Y coordinates for the base and inverted triangles.
-        Once you know the coordinates for the base triangle and the inscribed triangle, the process can be repeated recursively until told to stop.
-      </p>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--middle">
+      <div class="text-content">
+        <h1>Sierpinski Triangle</h1>
+        <p>The Sierpinski triangle is a fractal described in 1915 by Waclaw Sierpinski. It is a self similar structure that occurs at different levels of iterations, or magnifications.</p>
+        <p>My Implementation relies on the following strategy: </p>
+        <ol>
+          <li>Draw base triangle</li>
+          <li>Draw inverted triangle inside base triangle</li>
+          <li>Repeat</li>
+        </ol>
+        <p>
+          Inscribing an inverted triangle inside the base triangle creates more triangles which themselves can be inscribed. This process can be repeated infinitely.
+          My approach uses Pythagoras Theorem to derive the necessary X,Y coordinates for the base and inverted triangles.
+          Once you know the coordinates for the base triangle and the inscribed triangle, the process can be repeated recursively until told to stop.
+        </p>
 
-      <p>This demo is implemented with HTML5 Canvas and Javascript. <a href="https://github.com/githop/sierpinski-canvas" target="_blank">Source code</a></p>
-
-      <h4>Change depth to increase / decrease the amount of triangles</h4>
-      <label>Depth:
-        <input id="depth" type="number" min="1" max="6" value="4"/>
-      </label>
-      <button id="redraw">Redraw!</button>
+        <p>This demo is implemented with HTML5 Canvas and Javascript. <a href="https://github.com/githop/sierpinski-canvas" target="_blank">Source code</a></p>
+      </div>
     </div>
   </div>
+
 <script src="./sierpinski.js"></script>
 </body>
 </html>

@@ -7,20 +7,21 @@ function draw() {
 	var xOriginOffset = 10;
 	var yOriginOffset = 530;
 	var s = 600;
-	var redrawBtn = document.getElementById('redraw');
-	var depthInput = document.getElementById('depth');
+	var radioBtns = document.getElementsByClassName('mdl-radio__button');
 
-	redrawBtn.onclick = redraw;
+	var i = 0, len = radioBtns.length;
+
+	for (i; i < len; i++) {
+		radioBtns[i].onchange = redraw;
+	}
+
 
 	return {
 		step: step
 	};
 
 	function redraw(ev) {
-		var _depth = depthInput.value === undefined ? 4 : depthInput.value;
-		console.log("hmm", depthInput);
-		console.log('input?', depthInput.value);
-		console.log('depth?',_depth);
+		var _depth = ev.target.value === undefined ? 4 : ev.target.value;
 		step(_depth);
 	}
 

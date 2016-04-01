@@ -8,11 +8,10 @@ function draw() {
 	var yOriginOffset = 530;
 	var s = 600;
 	var radioBtns = document.getElementsByClassName('mdl-radio__button');
+	var len = radioBtns.length - 1;
 
-	var i = 0, len = radioBtns.length;
-
-	for (i; i < len; i++) {
-		radioBtns[i].onchange = redraw;
+	for (; len >= 0; len--) {
+		radioBtns[len].onchange = redraw;
 	}
 
 
